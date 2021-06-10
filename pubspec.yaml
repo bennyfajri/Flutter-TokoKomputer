@@ -43,6 +43,38 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+  assets:
+    - images/3090-1.png
+    - images/3090-2.png
+    - images/3090-3.png
+    - images/A320M-HDV.png
+    - images/A320M-HDV-2.png
+    - images/A320M-HDV-3.png
+    - images/rx570.jpg
+    - images/rx570-2.jpg
+    - images/rx570-3.jpg
+    - images/ryzen3-1.jpg
+    - images/ryzen3-2.jpg
+    - images/ryzen3-3.jpg
+    - images/ryzen9.jpg
+    - images/ryzen9-1.jpg
+    - images/ryzen9-2.jpg
+    - images/team-elite-1.jpg
+    - images/team-elite-2.jpg
+    - images/team-elite-3.jpg
+    - images/tridentz-1.jpg
+    - images/tridentz-2.jpg
+    - images/tridentz-3.jpg
+    - images/x570-1.png
+    - images/x570-2.png
+    - images/x570-3.png
+    
+
+
+  fonts:
+    - family: Modernist
+      fonts:
+        - asset: fonts/Sk-Modernist-Regular.otf
 
   # To add assets to your application, add an assets section, like this:
   # assets:
