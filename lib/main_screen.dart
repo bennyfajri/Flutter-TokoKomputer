@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:intl/intl.dart';
 import 'package:toko_komputer/detail_screen.dart';
 import 'package:toko_komputer/model/data_barang.dart';
 
@@ -31,9 +32,6 @@ class BarangList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Toko Komputer"),
-      ),
       body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -59,8 +57,8 @@ class BarangList extends StatelessWidget {
                           "Available",
                           style: TextStyle(
                               fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                        SemuaBarang(),
+                        )
+                        // SemuaBarang(),
                       ],
                     ),
                   ],
@@ -71,7 +69,7 @@ class BarangList extends StatelessWidget {
               height: 16.0,
             ),
             Container(
-              padding: const EdgeInsets.only(left: 16, right: 16),
+              padding: const EdgeInsets.only(left: 16),
               height: 200,
               child: ListView.builder(
                 shrinkWrap: true,
@@ -88,7 +86,6 @@ class BarangList extends StatelessWidget {
                     },
                     child: Card(
                       child: Column(
-                        // crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           Expanded(
                             child: ClipRRect(
@@ -114,7 +111,7 @@ class BarangList extends StatelessWidget {
                                 Text(barang.name),
                                 SizedBox(height: 4),
                                 Text(
-                                  "Rp. ${barang.price.toString()}",
+                                  "${NumberFormat.simpleCurrency(name: 'Rp').format(barang.price)}",
                                   style: TextStyle(
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.bold,
@@ -189,7 +186,7 @@ class BarangList extends StatelessWidget {
                                 Text(barang.name),
                                 SizedBox(height: 4),
                                 Text(
-                                  "Rp. ${barang.price.toString()}",
+                                  "${NumberFormat.simpleCurrency(name: 'Rp').format(barang.price)}",
                                   style: TextStyle(
                                     fontSize: 14.0,
                                     fontWeight: FontWeight.bold,
@@ -212,47 +209,47 @@ class BarangList extends StatelessWidget {
   }
 }
 
-class SemuaBarang extends StatefulWidget {
-  @override
-  _SemuaBarangState createState() => _SemuaBarangState();
-}
+// class SemuaBarang extends StatefulWidget {
+//   @override
+//   _SemuaBarangState createState() => _SemuaBarangState();
+// }
 
-class _SemuaBarangState extends State<SemuaBarang> {
-  @override
-  Widget build(BuildContext context) {
-    final double width = MediaQuery.of(context).size.width;
-    int gridCount;
-    if (width <= 600) {
-      gridCount = 2;
-    } else if (width <= 1200) {
-      gridCount = 4;
-    } else {
-      gridCount = 6;
-    }
-    return SizedBox(
-      height: 30,
-      child: OutlinedButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return BarangGrid(gridCount: gridCount);
-          }));
-        },
-        style: ButtonStyle(
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(18.0),
-              side: BorderSide(color: Colors.red),
-            ),
-          ),
-        ),
-        child: Text(
-          "Lainnya",
-          style: TextStyle(fontSize: 16.0, color: Colors.black),
-        ),
-      ),
-    );
-  }
-}
+// class _SemuaBarangState extends State<SemuaBarang> {
+//   @override
+//   Widget build(BuildContext context) {
+//     final double width = MediaQuery.of(context).size.width;
+//     int gridCount;
+//     if (width <= 600) {
+//       gridCount = 2;
+//     } else if (width <= 1200) {
+//       gridCount = 4;
+//     } else {
+//       gridCount = 6;
+//     }
+//     return SizedBox(
+//       height: 30,
+//       child: OutlinedButton(
+//         onPressed: () {
+//           Navigator.push(context, MaterialPageRoute(builder: (context) {
+//             return BarangGrid(gridCount: gridCount);
+//           }));
+//         },
+//         style: ButtonStyle(
+//           shape: MaterialStateProperty.all(
+//             RoundedRectangleBorder(
+//               borderRadius: BorderRadius.circular(18.0),
+//               side: BorderSide(color: Colors.red),
+//             ),
+//           ),
+//         ),
+//         child: Text(
+//           "Other",
+//           style: TextStyle(fontSize: 16.0, color: Colors.black),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 class BarangGrid extends StatelessWidget {
   final int gridCount;
@@ -281,7 +278,7 @@ class BarangGrid extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
-                        child: Image.asset(barang.imageAsset[1],
+                        child: Image.asset(barang.imageAsset[0],
                             fit: BoxFit.cover),
                       ),
                       SizedBox(
@@ -300,8 +297,7 @@ class BarangGrid extends StatelessWidget {
                       Padding(
                         padding: const EdgeInsets.only(left: 8.0, bottom: 8.0),
                         child: Text(
-                          barang.price.toString(),
-                        ),
+                            "${NumberFormat.simpleCurrency(locale: 'id').format(barang.price)}"),
                       ),
                     ],
                   ),

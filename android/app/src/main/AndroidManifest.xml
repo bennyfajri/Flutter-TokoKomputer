@@ -1,8 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.toko_komputer">
    <application
-        android:label="toko_komputer"
-        android:icon="@mipmap/ic_launcher">
+        android:label="Toko Komputer"
+        android:icon="@mipmap/launcher_icon">
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"
